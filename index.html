@@ -1,0 +1,1381 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Масса и плотность | Урок физики</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Comfortaa:wght@500;600;700&display=swap');
+
+:root {
+--blue:#2477bd;
+--dark:#153c60;
+--cyan:#47c8d5;
+--light:#eaf7ff;
+--white:#fff;
+--text:#24445f;
+--green:#55bd9c;
+--shadow:0 12px 35px rgba(35,100,150,.10);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;scroll-padding-top:85px;}
+
+body{
+font-family:'Nunito',sans-serif;
+background:#f2f9ff;
+color:var(--text);
+overflow-x:hidden;
+}
+
+.floating{
+position:fixed;
+pointer-events:none;
+z-index:0;
+opacity:.16;
+animation:float 8s ease-in-out infinite;
+}
+.f1{top:18%;left:3%;font-size:48px;}
+.f2{top:55%;right:4%;font-size:55px;animation-delay:2s;}
+.f3{top:85%;left:5%;font-size:42px;animation-delay:4s;}
+.f4{top:35%;right:8%;font-size:35px;animation-delay:1s;}
+
+@keyframes float{
+0%,100%{transform:translateY(0) rotate(0deg);}
+50%{transform:translateY(-25px) rotate(15deg);}
+}
+
+header{
+position:sticky;
+top:0;
+z-index:100;
+background:rgba(255,255,255,.94);
+backdrop-filter:blur(15px);
+box-shadow:0 3px 20px rgba(0,0,0,.05);
+}
+
+.nav{
+max-width:1250px;
+margin:auto;
+padding:16px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+}
+
+.logo{
+font-family:'Comfortaa',sans-serif;
+color:var(--blue);
+font-size:19px;
+font-weight:700;
+}
+.logo span{color:var(--cyan);}
+
+nav{display:flex;gap:20px;flex-wrap:wrap;}
+
+nav a{
+text-decoration:none;
+color:var(--text);
+font-size:13px;
+font-weight:800;
+transition:.3s;
+}
+nav a:hover{color:var(--cyan);}
+
+.menu-btn{
+display:none;
+background:var(--blue);
+color:white;
+border:none;
+padding:10px 14px;
+border-radius:10px;
+}
+
+.container{
+max-width:1150px;
+margin:auto;
+padding:65px 25px;
+position:relative;
+z-index:1;
+}
+
+.section-title{
+font-family:'Comfortaa',sans-serif;
+font-size:32px;
+color:var(--dark);
+margin-bottom:15px;
+}
+
+.section-subtitle{
+color:#7895aa;
+margin-bottom:35px;
+font-size:16px;
+}
+
+.card{
+background:white;
+border-radius:22px;
+padding:28px;
+box-shadow:var(--shadow);
+margin-bottom:22px;
+}
+
+.tag{
+display:inline-block;
+padding:7px 14px;
+background:#e4f7fc;
+color:#218ba7;
+border-radius:20px;
+font-size:12px;
+font-weight:900;
+margin-bottom:15px;
+}
+
+button{cursor:pointer;font-family:inherit;}
+
+.hero{
+min-height:590px;
+display:flex;
+align-items:center;
+background:
+radial-gradient(circle at 80% 30%,#bceef2 0,transparent 30%),
+linear-gradient(135deg,#dff3ff,#f6fcff 60%,#dcf8f5);
+position:relative;
+overflow:hidden;
+}
+
+.hero-content{
+max-width:1150px;
+margin:auto;
+padding:80px 25px;
+display:grid;
+grid-template-columns:1.2fr .8fr;
+align-items:center;
+gap:30px;
+}
+
+.hero h1{
+font-family:'Comfortaa',sans-serif;
+font-size:clamp(35px,5vw,61px);
+color:#153d62;
+line-height:1.2;
+margin-bottom:25px;
+}
+.hero h1 span{color:#279ac0;}
+
+.hero p{
+font-size:18px;
+line-height:1.8;
+color:#54748d;
+max-width:580px;
+}
+
+.primary-btn{
+display:inline-block;
+background:linear-gradient(135deg,#2585ca,#42c3cb);
+color:white;
+border:none;
+padding:15px 28px;
+border-radius:14px;
+font-size:16px;
+font-weight:900;
+margin-top:28px;
+box-shadow:0 8px 20px #48b8cb55;
+transition:.3s;
+text-decoration:none;
+}
+.primary-btn:hover{transform:translateY(-4px);}
+
+.hero-visual{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:320px;
+}
+
+.atom{
+width:250px;
+height:250px;
+border:3px solid #5abfd0;
+border-radius:50%;
+position:relative;
+transform:rotate(-30deg);
+}
+.atom:before{
+content:"";
+position:absolute;
+width:250px;
+height:100px;
+border:3px solid #3198ca;
+border-radius:50%;
+top:72px;
+left:-3px;
+transform:rotate(60deg);
+}
+.atom:after{
+content:"";
+position:absolute;
+width:250px;
+height:100px;
+border:3px solid #63bca9;
+border-radius:50%;
+top:72px;
+left:-3px;
+transform:rotate(-60deg);
+}
+.nucleus{
+position:absolute;
+top:105px;
+left:105px;
+width:35px;
+height:35px;
+background:#2388c5;
+border-radius:50%;
+box-shadow:0 0 30px #38c6dc;
+}
+
+.definition{
+border-left:5px solid var(--cyan);
+background:#effaff;
+padding:22px;
+border-radius:0 15px 15px 0;
+font-size:17px;
+line-height:1.8;
+margin:20px 0;
+}
+
+.highlight{color:#2389bd;font-weight:900;}
+
+.two-columns{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:22px;
+}
+
+.info-box{
+background:#f0f9ff;
+border-radius:18px;
+padding:23px;
+}
+.info-box h3{color:var(--blue);margin-bottom:12px;}
+.info-box p{line-height:1.8;}
+
+ul,ol{padding-left:23px;line-height:2;}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin:20px 0;
+overflow:hidden;
+border-radius:12px;
+}
+th{
+background:#2585bd;
+color:white;
+padding:14px;
+text-align:left;
+}
+td{
+padding:13px;
+border-bottom:1px solid #e5eff6;
+background:white;
+}
+tr:hover td{background:#f1faff;}
+
+.formula{
+background:linear-gradient(135deg,#e6f7ff,#e6fbf8);
+border-radius:18px;
+padding:25px;
+text-align:center;
+margin:20px 0;
+}
+.formula strong{
+display:block;
+color:#177eae;
+font-size:30px;
+margin:12px;
+font-family:'Comfortaa',sans-serif;
+}
+
+.solution{
+border:1px solid #d8edf8;
+border-radius:17px;
+padding:22px;
+margin:20px 0;
+}
+.solution h3{color:#2388bc;margin-bottom:12px;}
+
+.answer{
+background:#e6faf1;
+padding:12px;
+border-radius:10px;
+color:#19875e;
+font-weight:900;
+margin-top:12px;
+}
+
+/* ИНТЕРАКТИВНЫЕ МОДЕЛИ */
+
+.model-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+.model{
+background:white;
+border-radius:22px;
+padding:25px;
+box-shadow:var(--shadow);
+overflow:hidden;
+}
+
+.model h3{color:var(--blue);margin-bottom:20px;}
+
+input[type=range]{
+width:100%;
+accent-color:#289cc5;
+margin:14px 0;
+cursor:pointer;
+}
+
+input[type=number],select{
+width:100%;
+padding:13px;
+border:2px solid #dcecf5;
+border-radius:10px;
+font-family:inherit;
+font-size:15px;
+margin:8px 0 15px;
+outline:none;
+}
+
+input:focus{border-color:var(--cyan);}
+
+.value{
+font-size:27px;
+font-weight:900;
+color:#2487bd;
+}
+
+.result{
+padding:18px;
+background:#e9f8ff;
+border-radius:13px;
+margin-top:15px;
+line-height:1.8;
+}
+
+/* НОВАЯ ДВИЖУЩАЯСЯ МОДЕЛЬ ВЕСОВ */
+
+.scale-visual{
+height:210px;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+overflow:hidden;
+}
+
+.scale-assembly{
+width:260px;
+height:175px;
+position:relative;
+}
+
+.scale-support{
+position:absolute;
+bottom:5px;
+left:50%;
+transform:translateX(-50%);
+width:0;
+height:0;
+border-left:28px solid transparent;
+border-right:28px solid transparent;
+border-bottom:70px solid #56b8c9;
+}
+
+.scale-base{
+position:absolute;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:130px;
+height:10px;
+background:#328bb9;
+border-radius:10px;
+}
+
+.beam{
+position:absolute;
+top:42px;
+left:30px;
+width:200px;
+height:8px;
+background:#328bb9;
+border-radius:10px;
+transform-origin:50% 50%;
+transform:rotate(0deg);
+transition:transform .5s cubic-bezier(.2,.8,.2,1);
+}
+
+.beam:before{
+content:"";
+position:absolute;
+left:96px;
+top:4px;
+width:8px;
+height:55px;
+background:#56b8c9;
+border-radius:5px;
+}
+
+.plate{
+position:absolute;
+top:8px;
+width:6px;
+height:62px;
+background:#56b8c9;
+}
+
+.plate.left{left:8px;}
+.plate.right{right:8px;}
+
+.plate:after{
+content:"";
+position:absolute;
+width:70px;
+height:7px;
+border-radius:50%;
+background:#51b7c9;
+bottom:0;
+left:-32px;
+}
+
+.weight{
+position:absolute;
+bottom:7px;
+left:-9px;
+width:24px;
+height:var(--weight-height,30px);
+background:#65bba9;
+border-radius:5px 5px 2px 2px;
+transition:height .3s,background .3s;
+}
+
+.plate.right .weight{background:#318bc1;}
+
+/* НОВАЯ МОДЕЛЬ ПЛОТНОСТИ */
+
+.density-stage{
+height:235px;
+background:linear-gradient(180deg,#effaff,#d9f4f5);
+border-radius:18px;
+margin:18px 0;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+.water-line{
+position:absolute;
+bottom:55px;
+width:100%;
+height:75px;
+background:rgba(57,174,215,.24);
+border-top:3px solid rgba(51,153,204,.5);
+}
+
+.water-line:before,
+.water-line:after{
+content:"";
+position:absolute;
+width:100%;
+height:15px;
+border-top:2px solid rgba(255,255,255,.7);
+border-radius:50%;
+animation:wave 3s ease-in-out infinite alternate;
+}
+
+.water-line:before{top:15px;}
+.water-line:after{top:38px;animation-delay:1s;}
+
+@keyframes wave{
+from{transform:translateX(-12px);}
+to{transform:translateX(12px);}
+}
+
+.density-cube{
+width:85px;
+height:85px;
+background:linear-gradient(135deg,#4bc5d7,#2479b9);
+border:3px solid rgba(255,255,255,.8);
+border-radius:12px;
+box-shadow:12px 14px 20px rgba(30,105,150,.22);
+position:absolute;
+z-index:2;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:24px;
+font-weight:900;
+transform:translateY(-15px) rotate(0deg);
+transition:
+width .5s,
+height .5s,
+background .5s,
+transform .7s cubic-bezier(.2,.8,.2,1),
+border-radius .5s;
+}
+
+.density-cube.floating-cube{
+animation:cubeFloat 2s ease-in-out infinite;
+}
+
+@keyframes cubeFloat{
+0%,100%{margin-top:0;}
+50%{margin-top:-9px;}
+}
+
+.density-label{
+position:absolute;
+bottom:12px;
+font-size:12px;
+font-weight:900;
+color:#3986a5;
+z-index:3;
+}
+
+.calc-result{
+font-size:22px;
+font-weight:900;
+color:#1785a9;
+margin-top:15px;
+}
+
+.task{
+background:white;
+border-radius:18px;
+padding:23px;
+margin-bottom:18px;
+box-shadow:var(--shadow);
+}
+.task h3{color:var(--blue);margin-bottom:12px;}
+
+details{
+margin-top:12px;
+background:#eff9ff;
+padding:13px;
+border-radius:10px;
+}
+summary{
+cursor:pointer;
+color:#2385b8;
+font-weight:900;
+}
+
+.quiz-question{
+background:white;
+padding:23px;
+border-radius:16px;
+margin-bottom:17px;
+box-shadow:var(--shadow);
+}
+.quiz-question h3{
+margin-bottom:14px;
+color:#214e70;
+font-size:16px;
+}
+
+.option{
+display:block;
+padding:12px;
+margin:7px 0;
+border:1px solid #dfedf5;
+border-radius:10px;
+cursor:pointer;
+transition:.2s;
+}
+.option:hover{background:#e9f8ff;}
+.option input{margin-right:9px;accent-color:#278fc0;}
+
+.correct-answer{background:#dff8e9!important;}
+.wrong-answer{background:#ffe7e7!important;}
+
+#quizResult{
+display:none;
+padding:25px;
+border-radius:18px;
+background:#e1f8ed;
+text-align:center;
+margin-top:25px;
+}
+#quizResult h2{color:#16865e;font-size:30px;}
+
+.progress-box{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:4px;
+z-index:200;
+}
+.progress-bar{
+height:100%;
+background:linear-gradient(90deg,#34b4d1,#60d3b1);
+width:0%;
+}
+
+footer{
+background:#153d5f;
+color:white;
+padding:45px 20px;
+text-align:center;
+line-height:2;
+}
+footer span{color:#63d3d1;}
+
+@media(max-width:800px){
+.hero-content{grid-template-columns:1fr;text-align:center;}
+.hero p{margin:auto;}
+.hero-visual{min-height:250px;}
+.two-columns,.model-grid{grid-template-columns:1fr;}
+nav{
+display:none;
+position:absolute;
+top:65px;
+left:0;
+width:100%;
+background:white;
+padding:20px;
+flex-direction:column;
+box-shadow:var(--shadow);
+}
+nav.active{display:flex;}
+.menu-btn{display:block;}
+.section-title{font-size:25px;}
+.container{padding:45px 16px;}
+.card{padding:20px;}
+}
+
+@media(max-width:400px){
+.logo{font-size:15px;}
+.atom{transform:scale(.8) rotate(-30deg);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress-box">
+<div class="progress-bar" id="progress"></div>
+</div>
+
+<div class="floating f1">⚛</div>
+<div class="floating f2">🧊</div>
+<div class="floating f3">⚖️</div>
+<div class="floating f4">🧪</div>
+
+<header>
+<div class="nav">
+<div class="logo">PHYSICS <span>LAB</span> ⚛</div>
+<button class="menu-btn" onclick="toggleMenu()">☰ Меню</button>
+<nav id="navigation">
+<a href="#lesson">Урок</a>
+<a href="#mass">Масса</a>
+<a href="#density">Плотность</a>
+<a href="#models">Модели</a>
+<a href="#calculator">Калькулятор</a>
+<a href="#practice">Практика</a>
+<a href="#quiz">Тест</a>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<div>
+<span class="tag">ИНТЕРАКТИВНЫЙ УРОК ФИЗИКИ</span>
+<h1>Масса тела<br>и <span>плотность</span><br>вещества</h1>
+<p>Изучаем физику через эксперименты, интерактивные модели, практические задания и интересные примеры.</p>
+<a href="#lesson" class="primary-btn">Начать изучение →</a>
+</div>
+<div class="hero-visual">
+<div class="atom"><div class="nucleus"></div></div>
+</div>
+</div>
+</section>
+
+<section class="container" id="lesson">
+<span class="tag">ТЕОРЕТИЧЕСКАЯ ЧАСТЬ</span>
+<h2 class="section-title">1. Знакомство с темой</h2>
+<p class="section-subtitle">Что такое масса и плотность? Почему одинаковые по размеру предметы могут иметь разную массу?</p>
+<div class="card">
+<h3>Что такое масса тела?</h3>
+<div class="definition"><b>Масса</b> — физическая величина, характеризующая количество вещества в теле и его инертность.</div>
+<p>Масса показывает, сколько вещества содержится в предмете. Например, у камня, книги, автомобиля и человека есть масса.</p>
+<br>
+<div class="two-columns">
+<div class="info-box"><h3>🪨 Маленький камень</h3><p>Имеет небольшую массу, потому что содержит сравнительно мало вещества.</p></div>
+<div class="info-box"><h3>🚗 Автомобиль</h3><p>Имеет большую массу, потому что состоит из большого количества материалов.</p></div>
+</div>
+<div class="definition"><strong>Важно!</strong> Масса и размер предмета — не одно и то же. Маленький металлический предмет может иметь большую массу, чем большой предмет из пенопласта.</div>
+</div>
+</section>
+
+<section class="container" id="mass">
+<h2 class="section-title">2. Масса тела и её измерение</h2>
+<div class="card">
+<h3>Обозначение массы</h3>
+<p>В физике масса обозначается маленькой латинской буквой:</p>
+<div class="formula"><strong>m</strong>Масса тела</div>
+<h3>Единицы измерения массы</h3>
+<p>Основная единица измерения массы в Международной системе единиц — килограмм.</p>
+<table>
+<tr><th>Единица</th><th>Обозначение</th><th>Соотношение</th></tr>
+<tr><td>Тонна</td><td>т</td><td>1000 кг</td></tr>
+<tr><td>Килограмм</td><td>кг</td><td>1000 г</td></tr>
+<tr><td>Грамм</td><td>г</td><td>1000 мг</td></tr>
+<tr><td>Миллиграмм</td><td>мг</td><td>0,001 г</td></tr>
+</table>
+<div class="definition"><b>Запомни:</b><br>Из килограммов в граммы — умножаем на 1000.<br>Из граммов в килограммы — делим на 1000.</div>
+<h3>Примеры перевода</h3>
+<div class="solution"><h3>Пример 1</h3>Перевести 3 кг в граммы.<p>3 × 1000 = 3000 г.</p><div class="answer">Ответ: 3000 г.</div></div>
+<div class="solution"><h3>Пример 2</h3>Перевести 5000 г в килограммы.<p>5000 : 1000 = 5 кг.</p><div class="answer">Ответ: 5 кг.</div></div>
+<div class="solution"><h3>Пример 3</h3>Перевести 2,5 кг в граммы.<p>2,5 × 1000 = 2500 г.</p><div class="answer">Ответ: 2500 г.</div></div>
+<h3>Чем измеряют массу?</h3>
+<p>Для измерения массы используют специальные приборы — весы. Существуют электронные, рычажные, лабораторные и напольные весы.</p>
+<div class="two-columns">
+<div class="info-box"><h3>⚖️ Рычажные весы</h3><p>Массу предмета определяют сравнением с гирями известной массы.</p></div>
+<div class="info-box"><h3>🔬 Электронные весы</h3><p>Показывают массу предмета на электронном дисплее.</p></div>
+</div>
+</div>
+</section>
+
+<section class="container" id="density">
+<h2 class="section-title">3. Плотность вещества</h2>
+<p class="section-subtitle">Почему железо тяжелее дерева одинакового размера?</p>
+<div class="card">
+<div class="definition"><b>Плотность</b> — физическая величина, которая показывает, какая масса вещества содержится в единице объёма.</div>
+<p>Представим два одинаковых кубика. Один сделан из дерева, другой из железа. Размер у них одинаковый, но железный кубик будет тяжелее.</p>
+<p>Это происходит потому, что плотность железа больше плотности дерева. В одинаковом объёме железа содержится больше массы.</p>
+<div class="two-columns">
+<div class="info-box"><h3>🟫 Дерево</h3><p>Небольшая плотность. При одинаковом объёме масса меньше.</p></div>
+<div class="info-box"><h3>⬛ Железо</h3><p>Большая плотность. При одинаковом объёме масса больше.</p></div>
+</div>
+<h3 style="margin-top:25px;">Обозначение и единицы измерения</h3>
+<p>Плотность обозначается греческой буквой:</p>
+<div class="formula"><strong>ρ — РО</strong>Единицы измерения: кг/м³ и г/см³</div>
+<h3>Формула плотности</h3>
+<div class="formula"><strong>ρ = m / V</strong>Плотность = Масса / Объём</div>
+<p>Где:</p>
+<ul><li>ρ — плотность вещества;</li><li>m — масса тела;</li><li>V — объём тела.</li></ul>
+<h3>Три главные формулы</h3>
+<div class="two-columns">
+<div class="info-box"><h3>Найти плотность</h3><div class="formula"><strong>ρ = m / V</strong></div></div>
+<div class="info-box"><h3>Найти массу</h3><div class="formula"><strong>m = ρ × V</strong></div></div>
+<div class="info-box"><h3>Найти объём</h3><div class="formula"><strong>V = m / ρ</strong></div></div>
+<div class="info-box"><h3>Важно!</h3><p>Перед решением задачи проверяй, чтобы единицы измерения массы и объёма соответствовали друг другу.</p></div>
+</div>
+<h3>Таблица плотности веществ</h3>
+<table>
+<tr><th>Вещество</th><th>Плотность, кг/м³</th></tr>
+<tr><td>Вода</td><td>1000</td></tr>
+<tr><td>Лёд</td><td>900</td></tr>
+<tr><td>Дерево (примерно)</td><td>500–800</td></tr>
+<tr><td>Растительное масло</td><td>900</td></tr>
+<tr><td>Алюминий</td><td>2700</td></tr>
+<tr><td>Железо</td><td>7800</td></tr>
+<tr><td>Медь</td><td>8900</td></tr>
+<tr><td>Свинец</td><td>11300</td></tr>
+<tr><td>Золото</td><td>19300</td></tr>
+</table>
+<div class="definition">Если средняя плотность тела меньше плотности воды, оно обычно плавает. Если больше — обычно тонет.</div>
+</div>
+</section>
+
+<!-- ИНТЕРАКТИВНЫЕ МОДЕЛИ -->
+
+<section class="container" id="models">
+<span class="tag">ФИЗИЧЕСКАЯ ЛАБОРАТОРИЯ</span>
+<h2 class="section-title">4. Интерактивные модели</h2>
+<p class="section-subtitle">Меняй значения и наблюдай, как меняются физические величины.</p>
+
+<div class="model-grid">
+
+<div class="model">
+<h3>⚖️ Движущиеся весы</h3>
+<p>Измени массу гирь. Балка будет наклоняться в сторону более тяжёлой гири.</p>
+
+<label>Левая гиря (г)</label>
+<input type="range" min="0" max="1000" step="10" value="200" id="w1">
+<div class="value"><span id="w1v">200</span> г</div>
+
+<label>Правая гиря (г)</label>
+<input type="range" min="0" max="1000" step="10" value="300" id="w2">
+<div class="value"><span id="w2v">300</span> г</div>
+
+<div class="scale-visual">
+<div class="scale-assembly">
+<div class="beam" id="scaleBeam">
+<div class="plate left">
+<div class="weight" id="leftWeight"></div>
+</div>
+<div class="plate right">
+<div class="weight" id="rightWeight"></div>
+</div>
+</div>
+<div class="scale-support"></div>
+<div class="scale-base"></div>
+</div>
+</div>
+
+<div class="result" id="weightResult"></div>
+</div>
+
+<div class="model">
+<h3>🧊 Динамическая модель плотности</h3>
+<p>Меняй массу и объём. Наблюдай, как изменяются кубик и его положение в воде.</p>
+
+<label>Масса тела (г)</label>
+<input type="range" min="10" max="1000" step="10" value="300" id="massRange">
+<div class="value"><span id="massValue">300</span> г</div>
+
+<label>Объём тела (см³)</label>
+<input type="range" min="10" max="500" step="10" value="100" id="volumeRange">
+<div class="value"><span id="volumeValue">100</span> см³</div>
+
+<div class="density-stage">
+<div class="water-line"></div>
+<div class="density-cube floating-cube" id="densityCube">ρ</div>
+<div class="density-label">Модель тела в воде</div>
+</div>
+
+<div class="result">
+Плотность вещества:
+<div class="value" id="densityValue">3 г/см³</div>
+</div>
+
+<div class="result" id="densityExplanation"></div>
+</div>
+
+</div>
+</section>
+
+<section class="container" id="calculator">
+<h2 class="section-title">5. Физический калькулятор</h2>
+<p class="section-subtitle">Найди массу, плотность или объём автоматически.</p>
+<div class="model">
+<label>Что необходимо найти?</label>
+<select id="calcType">
+<option value="density">Плотность (ρ)</option>
+<option value="mass">Массу (m)</option>
+<option value="volume">Объём (V)</option>
+</select>
+<label>Масса (г)</label>
+<input type="number" id="calcMass" placeholder="Введите массу">
+<label>Объём (см³)</label>
+<input type="number" id="calcVolume" placeholder="Введите объём">
+<label>Плотность (г/см³)</label>
+<input type="number" id="calcDensity" placeholder="Введите плотность">
+<button class="primary-btn" onclick="calculate()">Рассчитать результат</button>
+<div class="result" id="calcResult">Здесь появится результат вычисления.</div>
+</div>
+</section>
+
+<section class="container">
+<h2 class="section-title">6. Перевод единиц массы</h2>
+<div class="model">
+<label>Введите значение в килограммах:</label>
+<input type="number" id="kgInput" placeholder="Например, 2.5">
+<button class="primary-btn" onclick="convertMass()">Перевести в граммы</button>
+<div class="result" id="convertResult">Результат появится здесь.</div>
+</div>
+</section>
+
+<section class="container" id="practice">
+<span class="tag">ЗАКРЕПЛЕНИЕ МАТЕРИАЛА</span>
+<h2 class="section-title">7. Практические задачи</h2>
+
+<div class="task">
+<h3>Задача № 1. Найти плотность</h3>
+<p>Масса металлического кубика 600 г, объём 200 см³. Найдите плотность.</p>
+<details><summary>Посмотреть решение</summary>
+<p>Дано: m = 600 г, V = 200 см³.</p>
+<p>Формула: ρ = m / V.</p>
+<p>ρ = 600 / 200 = 3 г/см³.</p>
+<div class="answer">Ответ: 3 г/см³.</div>
+</details>
+</div>
+
+<div class="task">
+<h3>Задача № 2. Найти массу</h3>
+<p>Плотность вещества 4 г/см³, объём 10 см³. Найдите массу.</p>
+<details><summary>Посмотреть решение</summary>
+<p>Дано: ρ = 4 г/см³, V = 10 см³.</p>
+<p>Формула: m = ρ × V.</p>
+<p>m = 4 × 10 = 40 г.</p>
+<div class="answer">Ответ: 40 г.</div>
+</details>
+</div>
+
+<div class="task">
+<h3>Задача № 3. Найти объём</h3>
+<p>Масса предмета 100 г, плотность 5 г/см³. Найдите объём.</p>
+<details><summary>Посмотреть решение</summary>
+<p>Дано: m = 100 г, ρ = 5 г/см³.</p>
+<p>Формула: V = m / ρ.</p>
+<p>V = 100 / 5 = 20 см³.</p>
+<div class="answer">Ответ: 20 см³.</div>
+</details>
+</div>
+
+<div class="task">
+<h3>Задача № 4. Найти плотность</h3>
+<p>Масса деревянного бруска 400 г, объём 800 см³. Найдите плотность.</p>
+<details><summary>Посмотреть решение</summary>
+<p>ρ = 400 / 800 = 0,5 г/см³.</p>
+<div class="answer">Ответ: 0,5 г/см³.</div>
+</details>
+</div>
+
+<div class="task">
+<h3>Задача № 5. Найти массу</h3>
+<p>Плотность вещества 8 г/см³, объём предмета 5 см³. Найдите массу.</p>
+<details><summary>Посмотреть решение</summary>
+<p>m = 8 × 5 = 40 г.</p>
+<div class="answer">Ответ: 40 г.</div>
+</details>
+</div>
+
+<div class="task">
+<h3>Задача № 6. Перевод единиц</h3>
+<p>Масса тела 2 кг, объём 1000 см³. Найдите плотность в г/см³.</p>
+<details><summary>Посмотреть решение</summary>
+<p>2 кг = 2000 г.</p>
+<p>ρ = 2000 / 1000 = 2 г/см³.</p>
+<div class="answer">Ответ: 2 г/см³.</div>
+</details>
+</div>
+</section>
+
+<section class="container" id="quiz">
+<span class="tag">ПРОВЕРКА ЗНАНИЙ</span>
+<h2 class="section-title">8. Итоговый тест</h2>
+<p class="section-subtitle">20 вопросов по теме «Масса тела и плотность вещества». Выбери один правильный ответ в каждом вопросе.</p>
+<div id="quizContainer"></div>
+<button class="primary-btn" onclick="checkQuiz()">Проверить мои ответы</button>
+<button class="primary-btn" onclick="resetQuiz()" style="background:#6e9cb5;margin-left:10px;">Пройти заново</button>
+<div id="quizResult">
+<h2 id="scoreText"></h2>
+<p id="scoreMessage"></p>
+</div>
+</section>
+
+<section class="container">
+<div class="card" style="text-align:center;background:linear-gradient(135deg,#e1f6ff,#e4faf2);">
+<h2 class="section-title">Поздравляем с завершением урока!</h2>
+<p style="font-size:17px;line-height:1.9;">Теперь ты знаешь, что такое масса, плотность и объём, умеешь пользоваться основными формулами и решать задачи по физике.</p>
+<div class="formula"><strong>ρ = m / V</strong>Главная формула сегодняшнего урока!</div>
+</div>
+</section>
+
+<footer>
+<h2>PHYSICS <span>LAB</span> ⚛</h2>
+<p>Интерактивный урок по физике</p>
+<p>Тема: Масса тела и плотность вещества</p>
+<p>Преподаватель: Джураев Муслим Тариэльевич</p>
+<p style="opacity:.6;font-size:13px;margin-top:15px;">Учимся понимать физику через эксперименты и практику.</p>
+</footer>
+
+<script>
+
+/* МЕНЮ */
+
+function toggleMenu(){
+document.getElementById('navigation').classList.toggle('active');
+}
+
+document.querySelectorAll('nav a').forEach(link=>{
+link.addEventListener('click',()=>{
+document.getElementById('navigation').classList.remove('active');
+});
+});
+
+/* ПРОКРУТКА */
+
+window.addEventListener('scroll',()=>{
+let height=document.documentElement.scrollHeight-window.innerHeight;
+let progress=height>0?(window.scrollY/height)*100:0;
+document.getElementById('progress').style.width=progress+'%';
+});
+
+/* РЕАЛЬНО ДВИЖУЩИЕСЯ ВЕСЫ */
+
+const w1=document.getElementById('w1');
+const w2=document.getElementById('w2');
+
+function updateWeights(){
+
+let a=Number(w1.value);
+let b=Number(w2.value);
+
+document.getElementById('w1v').textContent=a;
+document.getElementById('w2v').textContent=b;
+
+/* Определяем наклон балки */
+
+let difference=a-b;
+
+/* Ограничиваем угол наклона */
+
+let angle=Math.max(-22,Math.min(22,difference/35));
+
+document.getElementById('scaleBeam').style.transform=
+'rotate('+angle+'deg)';
+
+/* Меняем размеры гирь */
+
+let leftHeight=12+(a/1000)*30;
+let rightHeight=12+(b/1000)*30;
+
+document.getElementById('leftWeight').style.height=
+leftHeight+'px';
+
+document.getElementById('rightWeight').style.height=
+rightHeight+'px';
+
+/* Результат */
+
+let text='Общая масса гирь: <b>'+(a+b)+' г</b><br>';
+
+text+='В килограммах: <b>'+((a+b)/1000).toFixed(3)+' кг</b><br>';
+
+if(a===b){
+text+='<span style="color:#16865e">⚖️ Весы находятся в равновесии!</span>';
+}else if(a>b){
+text+='<span style="color:#2487bd">⬅ Левая сторона тяжелее. Балка наклонена влево.</span>';
+}else{
+text+='<span style="color:#2487bd">➡ Правая сторона тяжелее. Балка наклонена вправо.</span>';
+}
+
+document.getElementById('weightResult').innerHTML=text;
+
+}
+
+w1.addEventListener('input',updateWeights);
+w2.addEventListener('input',updateWeights);
+
+/* ДВИЖУЩАЯСЯ МОДЕЛЬ ПЛОТНОСТИ */
+
+const massRange=document.getElementById('massRange');
+const volumeRange=document.getElementById('volumeRange');
+
+function updateDensity(){
+
+let m=Number(massRange.value);
+let v=Number(volumeRange.value);
+let d=m/v;
+
+document.getElementById('massValue').textContent=m;
+document.getElementById('volumeValue').textContent=v;
+
+document.getElementById('densityValue').textContent=
+d.toFixed(2)+' г/см³';
+
+document.getElementById('densityExplanation').innerHTML=
+'Каждый 1 см³ вещества имеет массу <b>'+d.toFixed(2)+' г</b>.';
+
+const cube=document.getElementById('densityCube');
+
+/* Объём меняет размер кубика */
+
+let size=45+(v/500)*55;
+
+cube.style.width=size+'px';
+cube.style.height=size+'px';
+
+/* Плотность меняет цвет кубика */
+
+if(d<1){
+
+cube.style.background=
+'linear-gradient(135deg,#8ce4d0,#39b89a)';
+
+cube.style.transform='translateY(-65px) rotate(-8deg)';
+
+cube.innerHTML='ρ';
+
+cube.style.borderRadius='18px';
+
+cube.classList.add('floating-cube');
+
+document.getElementById('densityExplanation').innerHTML+=
+'<br><b style="color:#19875e">Тело плавает:</b> плотность меньше плотности воды.';
+
+}else if(d===1){
+
+cube.style.background=
+'linear-gradient(135deg,#75cde9,#328fc4)';
+
+cube.style.transform='translateY(-15px) rotate(0deg)';
+
+cube.style.borderRadius='12px';
+
+cube.classList.remove('floating-cube');
+
+document.getElementById('densityExplanation').innerHTML+=
+'<br><b style="color:#2487bd">Равновесие:</b> плотность равна плотности воды.';
+
+}else{
+
+cube.style.background=
+'linear-gradient(135deg,#377dbb,#153c75)';
+
+cube.style.transform='translateY(48px) rotate(8deg)';
+
+cube.style.borderRadius='8px';
+
+cube.classList.remove('floating-cube');
+
+document.getElementById('densityExplanation').innerHTML+=
+'<br><b style="color:#225b99">Тело тонет:</b> плотность больше плотности воды.';
+
+}
+
+}
+
+massRange.addEventListener('input',updateDensity);
+volumeRange.addEventListener('input',updateDensity);
+
+/* КАЛЬКУЛЯТОР */
+
+function calculate(){
+
+let type=document.getElementById('calcType').value;
+
+let massInput=document.getElementById('calcMass').value;
+let volumeInput=document.getElementById('calcVolume').value;
+let densityInput=document.getElementById('calcDensity').value;
+
+let m=Number(massInput);
+let v=Number(volumeInput);
+let d=Number(densityInput);
+
+let result='';
+
+if(type==='density'){
+
+if(massInput===''||volumeInput===''||m<0||v<=0){
+result='Введите положительную массу и объём.';
+}else{
+result='Плотность = '+(m/v).toFixed(3)+' г/см³';
+}
+
+}
+
+if(type==='mass'){
+
+if(densityInput===''||volumeInput===''||d<0||v<0){
+result='Введите плотность и объём.';
+}else{
+result='Масса = '+(d*v).toFixed(3)+' г';
+}
+
+}
+
+if(type==='volume'){
+
+if(massInput===''||densityInput===''||m<0||d<=0){
+result='Введите массу и положительную плотность.';
+}else{
+result='Объём = '+(m/d).toFixed(3)+' см³';
+}
+
+}
+
+document.getElementById('calcResult').textContent=result;
+
+}
+
+/* ПЕРЕВОД МАССЫ */
+
+function convertMass(){
+
+let kg=document.getElementById('kgInput').value;
+
+if(kg===''||Number(kg)<0){
+document.getElementById('convertResult').textContent='Введите неотрицательное число.';
+return;
+}
+
+document.getElementById('convertResult').innerHTML=
+kg+' кг = <b>'+(Number(kg)*1000)+' граммов</b>';
+
+}
+
+/* ТЕСТ */
+
+const questions=[
+
+{q:'1. Как обозначается масса в физике?',a:['V','m','ρ','F'],c:1},
+
+{q:'2. Какая основная единица измерения массы в СИ?',a:['Грамм','Тонна','Килограмм','Миллиграмм'],c:2},
+
+{q:'3. Сколько граммов содержится в одном килограмме?',a:['100','10','1000','10000'],c:2},
+
+{q:'4. Каким прибором измеряют массу?',a:['Термометром','Весами','Линейкой','Секундомером'],c:1},
+
+{q:'5. Что такое плотность?',a:['Масса единицы объёма вещества','Размер тела','Температура вещества','Скорость движения'],c:0},
+
+{q:'6. Как обозначается плотность?',a:['m','V','ρ','t'],c:2},
+
+{q:'7. Какова формула плотности?',a:['ρ = m × V','ρ = m / V','ρ = V / m','ρ = m + V'],c:1},
+
+{q:'8. В каких единицах измеряется плотность в СИ?',a:['кг','м³','кг/м³','г'],c:2},
+
+{q:'9. Масса тела 100 г, объём 20 см³. Чему равна плотность?',a:['2 г/см³','5 г/см³','20 г/см³','10 г/см³'],c:1},
+
+{q:'10. Плотность 4 г/см³, объём 5 см³. Найдите массу.',a:['9 г','20 г','1,25 г','40 г'],c:1},
+
+{q:'11. Масса 60 г, плотность 3 г/см³. Найдите объём.',a:['20 см³','180 см³','63 см³','30 см³'],c:0},
+
+{q:'12. Сколько килограммов содержится в 3000 граммах?',a:['30 кг','300 кг','3 кг','0,3 кг'],c:2},
+
+{q:'13. Какова плотность воды?',a:['100 кг/м³','1000 кг/м³','5000 кг/м³','7800 кг/м³'],c:1},
+
+{q:'14. Почему железный кубик тяжелее деревянного такого же объёма?',a:['У железа выше температура','У железа больше плотность','Дерево не имеет массы','У железа меньше объём'],c:1},
+
+{q:'15. Как найти массу через плотность и объём?',a:['m = ρ × V','m = ρ / V','m = V / ρ','m = ρ + V'],c:0},
+
+{q:'16. Что произойдёт с массой тела, если его плотность постоянна, а объём увеличится в 2 раза?',a:['Масса уменьшится в 2 раза','Масса останется прежней','Масса увеличится в 2 раза','Масса станет равна нулю'],c:2},
+
+{q:'17. Переведите 2,5 кг в граммы.',a:['250 г','2500 г','25 г','25000 г'],c:1},
+
+{q:'18. Как найти объём через массу и плотность?',a:['V = m × ρ','V = m + ρ','V = m / ρ','V = ρ / m'],c:2},
+
+{q:'19. Почему деревянная щепка обычно плавает в воде?',a:['Потому что её плотность меньше плотности воды','Потому что у неё нет массы','Потому что вода не оказывает на неё действие','Потому что она не имеет объёма'],c:0},
+
+{q:'20. Плотность вещества 8 г/см³, объём 10 см³. Чему равна масса?',a:['18 г','80 г','0,8 г','800 г'],c:1}
+
+];
+
+function renderQuiz(){
+
+let html='';
+
+questions.forEach((q,i)=>{
+
+html+=`
+<div class="quiz-question" id="question${i}">
+<h3>${q.q}</h3>
+${q.a.map((answer,j)=>`
+<label class="option">
+<input type="radio" name="q${i}" value="${j}">
+${String.fromCharCode(65+j)}. ${answer}
+</label>
+`).join('')}
+</div>
+`;
+
+});
+
+document.getElementById('quizContainer').innerHTML=html;
+
+}
+
+function checkQuiz(){
+
+let score=0;
+let answered=0;
+
+questions.forEach((q,i)=>{
+
+let selected=document.querySelector('input[name="q'+i+'"]:checked');
+let question=document.getElementById('question'+i);
+let options=question.querySelectorAll('.option');
+
+options.forEach((option,j)=>{
+
+option.classList.remove('correct-answer','wrong-answer');
+
+if(j===q.c){
+option.classList.add('correct-answer');
+}
+
+});
+
+if(selected){
+
+answered++;
+
+if(Number(selected.value)===q.c){
+score++;
+}else{
+options[Number(selected.value)].classList.add('wrong-answer');
+}
+
+}
+
+});
+
+let percent=Math.round(score/questions.length*100);
+
+document.getElementById('quizResult').style.display='block';
+
+document.getElementById('scoreText').textContent=
+score+' из '+questions.length+' ('+percent+'%)';
+
+let message='';
+
+if(score>=18){
+message='Отличный результат! Ты прекрасно знаешь тему! 🏆';
+}else if(score>=15){
+message='Очень хорошо! Осталось немного повторить материал! 🌟';
+}else if(score>=10){
+message='Неплохо! Повтори формулы и попробуй ещё раз! 📚';
+}else{
+message='Не расстраивайся! Вернись к уроку, изучи материал и повтори тест! 💙';
+}
+
+message+=' Отвечено вопросов: '+answered+' из 20.';
+
+document.getElementById('scoreMessage').textContent=message;
+
+document.getElementById('quizResult').scrollIntoView({
+behavior:'smooth',
+block:'center'
+});
+
+}
+
+function resetQuiz(){
+
+renderQuiz();
+
+document.getElementById('quizResult').style.display='none';
+
+document.getElementById('quiz').scrollIntoView({
+behavior:'smooth'
+});
+
+}
+
+/* ЗАПУСК МОДЕЛЕЙ */
+
+renderQuiz();
+updateWeights();
+updateDensity();
+
+</script>
+
+</body>
+</html>
+```
